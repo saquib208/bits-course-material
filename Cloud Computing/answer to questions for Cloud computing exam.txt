@@ -1,0 +1,75 @@
+Q.1.	When should cloud consumers decide about moving their business applications to the cloud from their own data center?. How do they decide as to which deployment model to adopt such that it meets their business requirements?.
+
+Depends upon cloud adoption strategy of the Customer.
+Reduce new hardware costs and time.
+Dont want to invest in additonal servers in data center.
+Application is workable and supported application on cloud.
+
+
+How customer decides
+
+
+If the migration dates are concern say in terms of data center exit dates and have contractual issue, then lift and shift to the cloud and then in course of time rearchitect.
+
+If data center exit dates are not a concern but CUstomer dont want to invest in new hardware and gradually over the course of time will move all the stuff to CLoud then below approaches
+
+If the workloads are supported on cloud, migrate AS-IS in form of lift and shift
+If the workloads are legacy and not supported, replatform or rearchitect. May be application may be rearchitected in form of microservices model than monolithic.
+Use PaaS in form of database as service. Select product based on Horizontal or vertical scaling, global or regional product. If data replication needed across regions in multiple geographies such as Spanner in Google CLoud instead of CLoud SQL.
+
+If data streaming is needed use products such as PubSub or Kafka CLusters in cloud.
+
+etc.....
+
+
+
+
+	        					                     [4] 
+
+Q.2.	Assume that a retailer decides to move his in-house shopping cart application to the cloud. Suppose you have been given the responsibility of translating this application to the elastic cloud application.  What could be the role of a load balancer here?. Is it necessary.?.  Can you design this elastic application without having a separate load balancer.?. Explain it.	                     [4]	
+
+LB will provide a HA layer to your application. You can have multiple stateless servers behind LB. 
+Use External LB (Application LB ) in front of the public web layer. This shall hit ingress controllers in Kubernetes that host all you web/app layers
+Use ingress controllers in Kubernetes which is kubernetes based layer 7 LB. This shall hit the multiple services.
+App pods can access persisitent volumes or databases via bus containers in pods and store data.
+DB service is PaaS based  
+
+Q.3.	Assume that the Indian government wants to deploy it owns application to deal with internal and external security. Which deployment model and service model of the cloud computing would you suggest such that it best meets the interests of the government? and justify the suggestion.	        [4]   
+
+Deployment model: -
+
+Can be hosted in community cloud which is gov cloud.
+Or it can be private data Centers controlled by Indian Government. Here they can use their own private cloud (They can define their own service model)
+
+Q.4.	How does a hypervisor enable the virtual machine to interact with the hardware of a machine?. 
+
+HV enables VM to interact via emulating the hardware components in a VM
+Usage of binary translation and abstraction.
+Use of full and para virtualization
+Hardware assisted virtuaization (Intel VT-x and AMD-V)
+Show picture of VMware where you can show vmkernel or Xen etc..				       		       			                   [4]
+
+Q.5.	What design features allow the hypervisors to achieve high performance?   What hypervisor would you suggest for achieving high performance.? and why?                    [4]	                                                      
+
+Design features of Type 1 bare metal HV
+Baremetal as it provides HA/DR, scalablity, security blah ....                   
+
+Q.6.	How Docker container applications run in isolation and explain how the systems that host these applications are vulnerable to various attacks.?			                   	       [4]
+
+They run in separate containers. If the container has AllowReadOnlyAccesEnabled to False and also root previliges are enabled. Anybody can get into the container and can access the host layer and network layer and intruse into the system
+
+
+Q.7.	Explain how a customer application can access stored objects of OpenStack Swift.?.  
+
+Swift is like S3 of AWS. Customer application can access stored objects in Swift based on roles and access permissions specified via identitiy provider which is keystone. Eaborate more based on your experience.
+                             							       			                   	       [3]
+
+Q.8.	Mention some scenarios in which it is required to migrate a virtual machine? And what factors are important in choosing and selecting as to which VM to be migrate to?.	       [4]
+
+Have xplained in Question 1 as well.
+
+
+Q.9.	Suggest some real-word use cases where Amazon SimpleDB would be useful. What advantages does it offer over Amazon Relation Database Service?.
+
+Somebody search and find it as I am not a AWS guy but a Google Guy. As per my understanding Simple DB is key store DB and contain generally metadata and can call documents from cloud storage when accessed via application APIs. 
+Lighter and scalable than RDBMS such as SQL databases in cloud (PaaS)

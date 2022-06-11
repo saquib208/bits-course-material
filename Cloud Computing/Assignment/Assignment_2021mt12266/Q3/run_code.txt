@@ -1,0 +1,8 @@
+1. Open linux terminal having pytthon installed
+2. Swith to code directory containing mapper.py ,reducer.py and testing.txt
+3. Run the command >cat testing.txt | python mapper.py this will give the count of each word
+4. Now sort/rearrangee the the output of this command using sort
+5. Run this command on the terminal >cat testing.txt | python mapper.py | sort -k1,1
+6. Now we have to pass the output of maaper.py as input of reducer.py so that it will give the count of each word
+7. Now run this command > cat testing.txt | python mapper.py | sort -k1,1 | python reducer.py
+8. You will observe the count of each word
